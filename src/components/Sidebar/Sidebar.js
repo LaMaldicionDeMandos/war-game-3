@@ -18,7 +18,7 @@
 /*eslint-disable*/
 import React from "react";
 import * as _ from 'lodash';
-import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 
@@ -30,8 +30,6 @@ import { Nav } from "reactstrap";
 import {
   BackgroundColorContext,
 } from "contexts/BackgroundColorContext";
-
-import sessionService from '../../services/session.service';
 
 var ps;
 

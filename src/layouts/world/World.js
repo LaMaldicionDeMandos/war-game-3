@@ -15,8 +15,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, {useLayoutEffect, useState} from "react";
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import React from "react";
+import { Switch, useLocation } from "react-router-dom";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 
@@ -24,15 +24,14 @@ import PerfectScrollbar from "perfect-scrollbar";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "../../routes";
 
 import logo from "assets/img/react-logo.png";
 import { BackgroundColorContext } from "contexts/BackgroundColorContext";
 
-import sessionService from '../../services/session.service';
 import Icons from "../../views/Icons";
+import Map from "../../views/Map";
 
 var ps;
 
@@ -113,7 +112,7 @@ function World(props) {
                 sidebarOpened={sidebarOpened}
               />
               <Switch>
-                <Icons />
+                <Map />
               </Switch>
               <Footer fluid />
             </div>

@@ -305,7 +305,6 @@ function Map() {
         <Row>
           <Col md="12">
             <Card className="card-plain">
-              <CardHeader>Google Maps</CardHeader>
               <CardBody>
                 <div
                   id="map"
