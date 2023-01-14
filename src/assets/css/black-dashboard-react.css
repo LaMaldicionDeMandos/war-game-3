@@ -12046,7 +12046,7 @@ hr {
     border-top: 2px solid #e14eca; }
   .main-panel > .content {
     padding: 78px 30px 30px 280px;
-    min-height: calc(100vh - 70px); }
+    min-height: calc(100vh - 48px); }
   .main-panel > .navbar {
     margin-bottom: 0; }
   .main-panel .header {
