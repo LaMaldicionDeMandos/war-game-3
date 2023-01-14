@@ -16,7 +16,7 @@
 
 */
 /*eslint-disable*/
-import React, {useState} from "react";
+import React from "react";
 import * as _ from 'lodash';
 import { NavLink, Link, useLocation, useHistory } from "react-router-dom";
 // nodejs library to set properties for components
@@ -26,10 +26,9 @@ import { PropTypes } from "prop-types";
 import PerfectScrollbar from "perfect-scrollbar";
 
 // reactstrap components
-import { Nav, NavLink as ReactstrapNavLink } from "reactstrap";
+import { Nav } from "reactstrap";
 import {
   BackgroundColorContext,
-  backgroundColors,
 } from "contexts/BackgroundColorContext";
 
 import sessionService from '../../services/session.service';
@@ -37,99 +36,25 @@ import sessionService from '../../services/session.service';
 var ps;
 
 function Sidebar(props) {
-  const user = sessionService.getUser();
   const location = useLocation();
   const sidebarRef = React.useRef(null);
-  // verifies if routeName is the one active (in browser input)
-  const activeRoute = (routeName) => {
-    return location.pathname === routeName ? "active" : "";
-  };
-  React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
-      ps = new PerfectScrollbar(sidebarRef.current, {
-        suppressScrollX: true,
-        suppressScrollY: false,
-      });
-    }
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      if (navigator.platform.indexOf("Win") > -1) {
-        ps.destroy();
-      }
-    };
-  });
-
-  const availableRouteByNav = (route) => route.name || route.icon;
-  const availableRouteByRole = (route) => !_.chain(route.roles).intersection(user?.roles).isEmpty().value();
 
   const history = useHistory();
 
-  const goToLink = () => history.push(logo.outterLink);
+  const goToLink = () => {}
 
-  const linkOnClick = () => {
-    document.documentElement.classList.remove("nav-open");
-  };
-  const { routes, rtlActive, logo } = props;
-  let logoImg = null;
-  let logoText = null;
-  if (logo !== undefined) {
-    if (logo.outterLink !== undefined) {
-      logoImg = (
-        <a
-          className="simple-text logo-mini"
-          target="_blank"
-          onClick={goToLink}
-        >
-          <div className="logo-img">
-            <img src={logo.imgSrc} alt="react-logo" />
-          </div>
-        </a>
-      );
-      logoText = (
-        <a
-          className="simple-text logo-normal"
-          target="_blank"
-          onClick={goToLink}
-        >
-          {logo.text}
-        </a>
-      );
-    } else {
-      logoImg = (
-        <Link
-          to={logo.innerLink}
-          className="simple-text logo-mini"
-          onClick={props.toggleSidebar}
-        >
-          <div className="logo-img">
-            <img src={logo.imgSrc} alt="react-logo" />
-          </div>
-        </Link>
-      );
-      logoText = (
-        <Link
-          to={logo.innerLink}
-          className="simple-text logo-normal"
-          onClick={props.toggleSidebar}
-        >
-          {logo.text}
-        </Link>
-      );
-    }
-  }
+  const { routes, rtlActive } = props;
+
   return (
     <BackgroundColorContext.Consumer>
       {({ color }) => (
         <div className="sidebar" data={color}>
           <div className="sidebar-wrapper" ref={sidebarRef}>
-            {logoImg !== null || logoText !== null ? (
               <div className="logo">
-                {logoImg}
-                {logoText}
+                <a className="simple-text logo-normal" target="_blank" onClick={goToLink}>Elementos</a>
               </div>
-            ) : null}
             <Nav>
-              {_.chain(routes).filter(availableRouteByNav).filter(availableRouteByRole).map((prop, key) => {
+              {_.chain(routes).filter([]).map((prop, key) => {
                 if (prop.redirect) return null;
                 return (
                   <li

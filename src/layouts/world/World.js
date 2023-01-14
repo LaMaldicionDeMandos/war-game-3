@@ -43,12 +43,6 @@ function World(props) {
     document.documentElement.className.indexOf("nav-open") !== -1
   );
 
-  const [ready, setReady] = useState(false);
-
-  useLayoutEffect(() => {
-    sessionService.refreshToken().then(() => setReady(true));
-  }, []);
-
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
       document.documentElement.className += " perfect-scrollbar-on";
@@ -90,35 +84,19 @@ function World(props) {
     document.documentElement.classList.toggle("nav-open");
     setsidebarOpened(!sidebarOpened);
   };
-  const getRoutes = (routes) => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
-      } else {
-        return null;
-      }
-    });
-  };
   const getBrandText = (path) => {
     for (let i = 0; i < routes.length; i++) {
       if (location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1) {
         return routes[i].name;
       }
     }
-    return "Brand";
+    return "World";
   };
   return (
     <BackgroundColorContext.Consumer>
       {({ color, changeColor }) => (
         <React.Fragment>
-          {ready ?
-            (<div className="wrapper">
+          <div className="wrapper">
             <Sidebar
               routes={routes}
               logo={{
@@ -139,7 +117,7 @@ function World(props) {
               </Switch>
               <Footer fluid />
             </div>
-          </div>) : ''}
+          </div>
         </React.Fragment>
       )}
     </BackgroundColorContext.Consumer>
