@@ -1,0 +1,68 @@
+{
+  "name": "War-Game-3",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@fortawesome/fontawesome-free": "5.15.1",
+    "@mui/material": "^5.4.0",
+    "axios": "^0.24.0",
+    "bootstrap": "4.5.3",
+    "chart.js": "2.9.4",
+    "classnames": "2.2.6",
+    "install": "^0.13.0",
+    "lodash": "^4.17.21",
+    "luxon": "^2.3.0",
+    "node-sass": "4.14.1",
+    "node-sass-package-importer": "5.3.2",
+    "npm": "^8.4.1",
+    "perfect-scrollbar": "1.5.0",
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-bootstrap": "^2.1.1",
+    "react-bootstrap-sweetalert": "^5.2.0",
+    "react-chartjs-2": "2.11.1",
+    "react-copy-to-clipboard": "^5.0.4",
+    "react-datetime": "^3.1.1",
+    "react-dom": "17.0.1",
+    "react-dropzone": "^11.5.1",
+    "react-hook-form": "^7.23.0",
+    "react-notification-alert": "0.0.13",
+    "react-number-format": "^4.9.1",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.1",
+    "reactstrap": "^9.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "dev": "env-cmd -f .env.development react-scripts start",
+    "prod": "env-cmd -f .env.production react-scripts start",
+    "build": "env-cmd -f .env.production react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "compile-scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css",
+    "minify-scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.min.css --output-style compressed",
+    "map-scss": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css --source-map true"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "optionalDependencies": {
+    "eslint-plugin-flowtype": "5.2.0",
+    "jquery": "3.5.1",
+    "typescript": "4.1.2"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8"
+  }
+}

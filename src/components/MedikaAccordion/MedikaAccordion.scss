@@ -1,0 +1,49 @@
+.medika-accordion {
+  .accordion-item {
+    position: relative;
+    width: 100%;
+    background: transparent;
+  }
+
+  .accordion-header {
+    position: relative;
+    padding: 1rem 0.75rem;
+    background-color: initial;
+    margin-left: 0;
+    margin-right: 0;
+    color: hsla(0,0%,100%,.8);
+  }
+
+  .card-header {
+    a[data-toggle=collapse] {
+      display: block;
+      color: hsla(0,0%,100%,.6);
+      i {
+        float: right;
+        position: relative;
+        color: #e14eca;
+        top: 1px;
+        transition: all .3s ease 0s;
+      }
+    }
+    a[data-toggle=collapse][aria-expanded=true] {
+      i {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  .rc {
+    float: right;
+    color: hsla(0,0%,100%,.6);
+    margin-right: 1rem;
+  }
+
+  .card {
+    margin-bottom: 0;
+  }
+}

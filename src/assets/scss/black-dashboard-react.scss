@@ -1,0 +1,180 @@
+
+/*
+ =========================================================
+ * Black Dashboard React v1.2.0 based on Black Dashboard - v1.2.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/black-dashboard-react
+ * Copyright 2020 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
+
+ * Coded by Creative Tim
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+ // Core
+
+@import "black-dashboard-react/custom/functions";
+@import "~bootstrap/scss/functions";
+
+@import "black-dashboard-react/custom/variables";
+@import "~bootstrap/scss/variables";
+
+@import "black-dashboard-react/custom/mixins";
+@import "~bootstrap/scss/mixins";
+
+ // Bootstrap components
+
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+ // Custom components
+
+ @import "black-dashboard-react/custom/alerts.scss";
+ @import "black-dashboard-react/custom/badges.scss";
+ @import "black-dashboard-react/custom/buttons.scss";
+ @import "black-dashboard-react/custom/dropdown.scss";
+ @import "black-dashboard-react/custom/footer.scss";
+ @import "black-dashboard-react/custom/forms.scss";
+ @import "black-dashboard-react/custom/images.scss";
+ @import "black-dashboard-react/custom/modal.scss";
+ @import "black-dashboard-react/custom/navbar.scss";
+ @import "black-dashboard-react/custom/type.scss";
+ @import "black-dashboard-react/custom/tables";
+ @import "black-dashboard-react/custom/checkboxes-radio";
+ @import "black-dashboard-react/custom/fixed-plugin";
+ @import "black-dashboard-react/custom/sidebar-and-main-panel.scss";
+ @import "black-dashboard-react/custom/misc.scss";
+ @import "black-dashboard-react/custom/rtl.scss";
+ @import "black-dashboard-react/custom/input-group.scss";
+
+
+ // Vendor / Plugins
+
+@import "black-dashboard-react/custom/vendor/plugin-perfect-scrollbar.scss";
+@import "black-dashboard-react/custom/vendor/plugin-react-notification-alert.scss";
+
+// light mode
+
+@import "black-dashboard-react/custom/white-content.scss";
+
+// Cards
+
+@import 'black-dashboard-react/custom/card';
+@import "black-dashboard-react/custom/cards/card-chart";
+@import "black-dashboard-react/custom/cards/card-map";
+@import "black-dashboard-react/custom/cards/card-user";
+@import "black-dashboard-react/custom/cards/card-task";
+@import "black-dashboard-react/custom/cards/card-plain";
+
+// React differences
+@import "black-dashboard-react/react-differences/react-differences";
+
+button.btn-close{
+ position: absolute;
+ right: 15px;
+ top: 50%;
+ margin-top: -13px;
+ width: 25px;
+ height: 25px;
+ padding: 3px;
+ background-color: initial;
+ border: 0;
+ color: $white;
+ opacity: .9;
+ text-shadow: none;
+ line-height: 0;
+ outline: 0;
+ &::after{
+  display: inline-block;
+  font: normal normal normal 1em/1 'Nucleo';
+  vertical-align: middle;
+  speak: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  content: "\ea48"
+ }
+ span {
+  display: none !important;
+ }
+}
+
+.nav-pills .nav-item .nav-link.active, .nav-pills .nav-item .nav-link.active:focus, .nav-pills .nav-item .nav-link.active:hover {
+ background-color: #9a9a9a;
+ color: #fff;
+}
+
+.nav-pills.nav-pills-info .nav-item .nav-link.active, .nav-pills.nav-pills-info .nav-item .nav-link.active:focus, .nav-pills.nav-pills-info .nav-item .nav-link.active:hover {
+ background: #1d8cf8;
+ background-image: linear-gradient(to bottom left,#1d8cf8,#3358f4,#1d8cf8);
+ background-size: 210% 210%;
+ background-position: 100% 0;
+}
+
+.nav-pills.nav-pills-danger .nav-item .nav-link.active, .nav-pills.nav-pills-info .nav-item .nav-link.active:focus, .nav-pills.nav-pills-info .nav-item .nav-link.active:hover {
+ background: #fd5d93;
+ background-image: linear-gradient(to bottom left,#fd5d93,#ec250d,#fd5d93);
+ background-size: 210% 210%;
+ background-position: 100% 0;
+}
+
+.nav-pills.nav-pills:not(.flex-column) .nav-item:not(:last-child) .nav-link {
+ margin-right: 10px;
+ margin-bottom: 5px;
+}
+
+.nav-pills .nav-item .nav-link {
+ text-align: center;
+ padding: 11px 23px;
+ min-width: 100px;
+ font-weight: 400;
+ color: hsla(0,0%,100%,.5);
+ background-color: #191f31;
+ cursor: pointer;
+}
+
+.nav-pills .nav-item i {
+ display: block;
+ font-size: 24px;
+ line-height: 60px;
+}
+
+.dropdown .nav-link {
+ padding: 0;
+}
+
