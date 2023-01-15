@@ -11663,6 +11663,10 @@ hr {
 .sidebar-wrapper ul li div.collapse ul li div.collapsing ul li a,
 .sidebar-wrapper ul li div.collapsing ul li div.collapse ul li a {
   margin-left: 25px; }
+.sidebar .rtl {
+  left: unset;
+  right: 0;
+}
 
 .sidebar,
 .off-canvas-sidebar {
@@ -12045,7 +12049,7 @@ hr {
   .main-panel[data="primary"] {
     border-top: 2px solid #e14eca; }
   .main-panel > .content {
-    padding: 78px 30px 30px 280px;
+    padding: 78px 280px 30px 280px;
     min-height: calc(100vh - 48px); }
   .main-panel > .navbar {
     margin-bottom: 0; }
@@ -12128,6 +12132,7 @@ hr {
     .sidebar-mini .sidebar:hover .nav [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini-icon {
       opacity: 0; }
   .sidebar-mini .main-panel > .content {
+    padding-right: 130px;
     padding-left: 130px; }
   .sidebar-mini footer {
     padding-left: 130px; }

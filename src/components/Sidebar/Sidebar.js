@@ -18,7 +18,7 @@
 /*eslint-disable*/
 import React from "react";
 import * as _ from 'lodash';
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
 
@@ -33,46 +33,19 @@ import {
 
 var ps;
 
-function Sidebar(props) {
-  const location = useLocation();
+function Sidebar({title, children, className = ''}) {
   const sidebarRef = React.useRef(null);
-
-  const history = useHistory();
-
-  const goToLink = () => {}
-
-  const { routes, rtlActive } = props;
 
   return (
     <BackgroundColorContext.Consumer>
       {({ color }) => (
-        <div className="sidebar" data={color}>
+        <div className={'sidebar ' + className} data={color}>
           <div className="sidebar-wrapper" ref={sidebarRef}>
               <div className="logo">
-                <a className="simple-text logo-normal" target="_blank" onClick={goToLink}>Elementos</a>
+                <a className="simple-text logo-normal" target="_blank">{title}</a>
               </div>
             <Nav>
-              {_.chain(routes).filter([]).map((prop, key) => {
-                if (prop.redirect) return null;
-                return (
-                  <li
-                    className={
-                      activeRoute(prop.path) + (prop.pro ? " active-pro" : "")
-                    }
-                    key={key}
-                  >
-                    <NavLink
-                      to={prop.layout + prop.path}
-                      className="nav-link"
-                      activeClassName="active"
-                      onClick={props.toggleSidebar}
-                    >
-                      <i className={prop.icon} />
-                      <p>{rtlActive ? prop.rtlName : prop.name}</p>
-                    </NavLink>
-                  </li>
-                );
-              }).value()}
+              {children}
             </Nav>
           </div>
         </div>

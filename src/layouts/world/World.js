@@ -25,22 +25,15 @@ import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 
-import routes from "../../routes";
-
-import logo from "assets/img/react-logo.png";
 import { BackgroundColorContext } from "contexts/BackgroundColorContext";
 
-import Icons from "../../views/Icons";
-import Map from "../../views/Map";
+import MainScreen from "../../views/MainScreen";
 
 var ps;
 
 function World(props) {
   const location = useLocation();
   const mainPanelRef = React.useRef(null);
-  const [sidebarOpened, setsidebarOpened] = React.useState(
-    document.documentElement.className.indexOf("nav-open") !== -1
-  );
 
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -78,41 +71,25 @@ function World(props) {
       mainPanelRef.current.scrollTop = 0;
     }
   }, [location]);
-  // this function opens and closes the sidebar on small devices
-  const toggleSidebar = () => {
-    document.documentElement.classList.toggle("nav-open");
-    setsidebarOpened(!sidebarOpened);
-  };
-  const getBrandText = (path) => {
-    for (let i = 0; i < routes.length; i++) {
-      if (location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1) {
-        return routes[i].name;
-      }
-    }
-    return "World";
-  };
+
   return (
     <BackgroundColorContext.Consumer>
-      {({ color, changeColor }) => (
+      {({ color }) => (
         <React.Fragment>
           <div className="wrapper">
-            <Sidebar
-              routes={routes}
-              logo={{
-                outterLink: "/",
-                text: "Medika Admin",
-                imgSrc: logo,
-              }}
-              toggleSidebar={toggleSidebar}
-            />
+
+            <Sidebar title="Elementos">
+              <h1>[WIP]</h1>
+            </Sidebar>
+
+            <Sidebar title="Comandos" className="sidebar-rtl">
+              <h1>[WIP]</h1>
+            </Sidebar>
+
             <div className="main-panel" ref={mainPanelRef} data={color}>
-              <AdminNavbar
-                brandText={getBrandText(location.pathname)}
-                toggleSidebar={toggleSidebar}
-                sidebarOpened={sidebarOpened}
-              />
+              <AdminNavbar brandText="World"/>
               <Switch>
-                <Map />
+                <MainScreen />
               </Switch>
               <Footer fluid />
             </div>
