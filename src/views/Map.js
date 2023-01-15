@@ -21,8 +21,8 @@ import GoogleMapReact from 'google-map-react';
 function Map() {
   const defaultProps = {
     center: {
-      lat: -34.59835602,
-      lng: -58.91502627
+      lat: -34.6080513,
+      lng: -58.3703111
     },
     zoom: 8
   };
@@ -34,10 +34,10 @@ function Map() {
           bootstrapURLKeys={{ key: "" }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
-          options={{rotateControl: true, controlSize: 16, fullscreenControl: false}}
+          options={{controlSize: 20, fullscreenControl: false, mapTypeControl: true, mapTypeControlOptions: {position: 3}}}
         >
-          <label style={{position: 'fixed', top: -242, left: '-48%', color: 'black'}}>[WIP Coordenadas]</label>
-          <img src="img/circle.png"/>
+          <label style={{position: 'fixed', top: -246, left: '-49.5%', color: 'black', backgroundColor: 'rgba(255, 255, 255, 0.6)'}}>[WIP Coordenadas]</label>
+          <img src="img/circle.png" style={{position: 'fixed', top: -8, left: -8}}/>
         </GoogleMapReact>
       </div>
     </>
