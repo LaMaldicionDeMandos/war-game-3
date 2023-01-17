@@ -19,7 +19,8 @@ import React from "react";
 
 // reactstrap components
 import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
-import Map from "./Map";
+import Map from "../components/Map";
+import Console from "../components/Console";
 
 function MainScreen() {
   return (
@@ -47,7 +48,7 @@ function MainScreen() {
           <Col md="12">
             <Card className="card-plain">
               <CardBody>
-                [WIP CONSOLE]
+                <Console />
               </CardBody>
             </Card>
           </Col>

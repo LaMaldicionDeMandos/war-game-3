@@ -178,3 +178,13 @@ button.btn-close{
  padding: 0;
 }
 
+.map-label {
+ position: fixed;
+ top: -246px;
+ left: -49.5%;
+ color: black !important;
+ font-weight: bold;
+ background-color: rgba(255, 255, 255, 0.6);
+ padding: 2px 8px;
+}
+

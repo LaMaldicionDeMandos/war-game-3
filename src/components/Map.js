@@ -22,7 +22,14 @@ function Map() {
   const [center, setCenter] = useState({lat: 0, lng: 0});
   const defaultProps = {
     center: center,
-    zoom: 8
+    zoom: 8,
+  };
+
+  const mapOptions = {
+    controlSize: 20,
+    fullscreenControl: false,
+    mapTypeControl: true,
+    mapTypeControlOptions: {position: 3}
   };
 
   const onMapChange = (e) => {
@@ -32,15 +39,15 @@ function Map() {
 
   return (
     <>
-      <div className="content" style={{backgroundColor: 'orange', height: '500px'}}>
+      <div className="content" style={{height: '500px'}}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "" }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
           onChange={onMapChange}
-          options={{controlSize: 20, fullscreenControl: false, mapTypeControl: true, mapTypeControlOptions: {position: 3}}}
+          options={mapOptions}
         >
-          <label style={{position: 'fixed', top: -246, left: '-49.5%', color: 'black', fontWeight: 'bold', backgroundColor: 'rgba(255, 255, 255, 0.6)', padding: '2px 8px'}}>
+          <label className="map-label">
             lat: {center.lat} - lng: {center.lng}</label>
           <img src="img/circle.png" style={{position: 'fixed', top: -8, left: -8}}/>
         </GoogleMapReact>
