@@ -15,17 +15,20 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, {useState} from "react";
 import GoogleMapReact from 'google-map-react';
 
 function Map() {
+  const [center, setCenter] = useState({lat: 0, lng: 0});
   const defaultProps = {
-    center: {
-      lat: -34.6080513,
-      lng: -58.3703111
-    },
+    center: center,
     zoom: 8
   };
+
+  const onMapChange = (e) => {
+    console.log("Map changed " + JSON.stringify(e));
+    setCenter(e.center);
+  }
 
   return (
     <>
@@ -34,9 +37,11 @@ function Map() {
           bootstrapURLKeys={{ key: "" }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
+          onChange={onMapChange}
           options={{controlSize: 20, fullscreenControl: false, mapTypeControl: true, mapTypeControlOptions: {position: 3}}}
         >
-          <label style={{position: 'fixed', top: -246, left: '-49.5%', color: 'black', backgroundColor: 'rgba(255, 255, 255, 0.6)'}}>[WIP Coordenadas]</label>
+          <label style={{position: 'fixed', top: -246, left: '-49.5%', color: 'black', fontWeight: 'bold', backgroundColor: 'rgba(255, 255, 255, 0.6)', padding: '2px 8px'}}>
+            lat: {center.lat} - lng: {center.lng}</label>
           <img src="img/circle.png" style={{position: 'fixed', top: -8, left: -8}}/>
         </GoogleMapReact>
       </div>
