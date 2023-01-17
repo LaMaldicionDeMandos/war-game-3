@@ -38,6 +38,7 @@ import {
   NavbarToggler,
   ModalHeader,
 } from "reactstrap";
+import {Image} from "react-bootstrap";
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
@@ -74,13 +75,14 @@ function AdminNavbar(props) {
   return (
     <>
       <Navbar className={classNames("navbar-absolute", color)} expand="lg">
-        <Container fluid>
-          <div className="navbar-wrapper">
-            <NavbarBrand href="#" onClick={(e) => e.preventDefault()}>
-              {props.brandText}
-            </NavbarBrand>
-          </div>
-        </Container>
+        <div className="navbar-wrapper">
+          <NavbarBrand href="#" onClick={(e) => e.preventDefault()}>
+            <Image src="img/flags/onu.svg" width={80} height={50}/>
+          </NavbarBrand>
+          <NavbarBrand href="#" onClick={(e) => e.preventDefault()}>
+            {props.brandText}
+          </NavbarBrand>
+        </div>
       </Navbar>
     </>
   );
