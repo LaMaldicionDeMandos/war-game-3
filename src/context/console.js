@@ -1,7 +1,9 @@
 import * as _ from 'lodash';
 
+import addCountryCommand from '../context/commands/addCountry.command';
+
 class Console {
-  #processors = [];
+  #processors = [addCountryCommand];
   execute(command) {
     const expressions = this.#toArray(command);
     const commandName = _.first(expressions);
