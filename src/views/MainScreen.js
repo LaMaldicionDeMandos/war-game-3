@@ -45,12 +45,8 @@ function MainScreen() {
           </Col>
         </Row>
         <Row style={{backgroundColor: 'darkgrey', height: '40px'}}>
-          <Col md="12">
-            <Card className="card-plain">
-              <CardBody>
-                <Console />
-              </CardBody>
-            </Card>
+          <Col md="12" style={{padding: 0}}>
+            <Console />
           </Col>
         </Row>
       </div>
