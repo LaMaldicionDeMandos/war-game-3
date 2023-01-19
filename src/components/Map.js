@@ -17,9 +17,10 @@
 */
 import React, {useState} from "react";
 import GoogleMapReact from 'google-map-react';
+import {useGlobalState, setGlobalState, MAP_CENTER} from "../contexts/GlobalState";
 
 function Map() {
-  const [center, setCenter] = useState({lat: 0, lng: 0});
+  const [center] = useGlobalState(MAP_CENTER);
   const defaultProps = {
     center: center,
     zoom: 8,
@@ -34,7 +35,7 @@ function Map() {
 
   const onMapChange = (e) => {
     console.log("Map changed " + JSON.stringify(e));
-    setCenter(e.center);
+    setGlobalState(MAP_CENTER, (c) => e.center);
   }
 
   return (

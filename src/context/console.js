@@ -4,13 +4,13 @@ import addCountryCommand from '../context/commands/addCountry.command';
 
 class Console {
   #processors = [addCountryCommand];
-  execute(command) {
+  execute(command, position) {
     const expressions = this.#toArray(command);
     const commandName = _.first(expressions);
     const args = _.tail(expressions);
     const processor = _.find(this.#processors, processor => processor.support(commandName));
     if (!processor) return Promise.reject(`Error: command ${commandName} not found`);
-    return processor.execute(args);
+    return processor.execute(args, position);
   }
 
   #toArray = (command) => {
