@@ -37,7 +37,7 @@
     "reactstrap": "^9.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "env-cmd -f .env.development react-scripts start",
     "dev": "env-cmd -f .env.development react-scripts start",
     "prod": "env-cmd -f .env.production react-scripts start",
     "build": "env-cmd -f .env.production react-scripts build",

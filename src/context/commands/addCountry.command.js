@@ -1,13 +1,13 @@
 import {parseArgs} from './command_utils';
 import { assign } from 'lodash'
+import worldService from '../../services/world.service';
 
 const COMMAND_NAME = 'addCountry';
 class AddCountryCommand {
   execute(args, position) {
     const params = assign(parseArgs(args), {position});
     if (!this.#validateArgs(params)) return Promise.reject("Required arguments: (name, code, pib and pop)");
-    //TODO Send arg to backend
-    return Promise.resolve(`Executing addCountry command with args: ${params}`);
+    return worldService.addCountry(params);
   }
 
   support(commandName) {
