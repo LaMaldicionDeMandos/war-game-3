@@ -39,6 +39,7 @@ import {
   ModalHeader,
 } from "reactstrap";
 import {Image} from "react-bootstrap";
+import CurrentDate from "../CurrentDate";
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
@@ -83,6 +84,7 @@ function AdminNavbar(props) {
             {props.brandText}
           </NavbarBrand>
         </div>
+        <CurrentDate />
       </Navbar>
     </>
   );

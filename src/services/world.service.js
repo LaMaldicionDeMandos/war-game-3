@@ -13,6 +13,16 @@ class WorldService {
       .then(response => response.data)
       .catch(e => Promise.reject(e.response.data));
   }
+
+  getCurrentDate() {
+    return axios
+      .get(
+        `${API_URL}/world/current-date`,
+        {}
+      )
+      .then(response => response.data)
+      .catch(e => Promise.reject(e.response.data));
+  }
 }
 
 const service = new WorldService();
