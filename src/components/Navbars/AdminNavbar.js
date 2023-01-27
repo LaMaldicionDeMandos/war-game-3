@@ -40,6 +40,7 @@ import {
 } from "reactstrap";
 import {Image} from "react-bootstrap";
 import CurrentDate from "../CurrentDate";
+import NextEventButton from "../NextEventButton";
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
@@ -85,6 +86,7 @@ function AdminNavbar(props) {
           </NavbarBrand>
         </div>
         <CurrentDate />
+        <NextEventButton />
       </Navbar>
     </>
   );
