@@ -6,7 +6,7 @@ class WorldService {
   addCountry(country) {
     return axios
       .post(
-        `${API_URL}/world/countries`,
+        `${API_URL}/countries`,
         country,
         {}
       )
@@ -17,10 +17,19 @@ class WorldService {
   getCurrentDate() {
     return axios
       .get(
-        `${API_URL}/world/current-date`,
+        `${API_URL}/current-date`,
         {}
       )
       .then(response => response.data)
+      .catch(e => Promise.reject(e.response.data));
+  }
+
+  getAllCountries() {
+    return axios
+      .get(
+        `${API_URL}/countries`,
+        {}
+      ).then(response => response.data)
       .catch(e => Promise.reject(e.response.data));
   }
 }

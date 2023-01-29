@@ -15,11 +15,14 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, {useState} from "react";
+import React from "react";
 import GoogleMapReact from 'google-map-react';
 import {useGlobalState, setGlobalState, MAP_CENTER} from "../contexts/GlobalState";
 
-function Map() {
+import * as _ from 'lodash';
+import CountryItem from "./MapItems/Country/CountryItem";
+
+function Map({countries}) {
   const [center] = useGlobalState(MAP_CENTER);
   const defaultProps = {
     center: center,
@@ -32,6 +35,10 @@ function Map() {
     mapTypeControl: true,
     mapTypeControlOptions: {position: 3}
   };
+
+  const countryItems = _.map(countries, (country) => {
+    return <CountryItem country={country} lat={country.position.lat} lng={country.position.lng} />
+  });
 
   const onMapChange = (e) => {
     console.log("Map changed " + JSON.stringify(e));
@@ -51,6 +58,7 @@ function Map() {
           <label className="map-label">
             lat: {center.lat} - lng: {center.lng}</label>
           <img src="img/circle.png" style={{position: 'fixed', top: -8, left: -8}}/>
+          {countryItems}
         </GoogleMapReact>
       </div>
     </>

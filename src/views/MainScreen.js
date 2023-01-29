@@ -15,14 +15,23 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 // reactstrap components
-import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
+import { Card, CardBody, Row, Col } from "reactstrap";
 import Map from "../components/Map";
 import Console from "../components/Console";
 
+import worldService from '../services/world.service';
+
 function MainScreen() {
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    worldService.getAllCountries()
+      .then(c => setCountries(c));
+  }, []);
+
   return (
     <>
       <div className="content">
@@ -30,7 +39,7 @@ function MainScreen() {
           <Col md="12" style={{padding: 0}}>
             <Card className="card-plain" style={{margin: 0}}>
               <CardBody style={{padding: 0}}>
-                <Map />
+                <Map countries={countries}/>
               </CardBody>
             </Card>
           </Col>
