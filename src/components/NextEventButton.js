@@ -1,11 +1,14 @@
-import React, {useEffect} from "react";
+import React from "react";
 import worldService from '../services/world.service';
 import {Button} from "reactstrap";
 
 function NextEventButton() {
 
   const onNext = () => {
-    console.log("Next Event");
+    worldService.getNextEvent()
+      .then(ev => {
+        console.log(`Next Event ${JSON.stringify(ev)}`);
+      })
   }
 
   return (

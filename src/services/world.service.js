@@ -32,6 +32,15 @@ class WorldService {
       ).then(response => response.data)
       .catch(e => Promise.reject(e.response.data));
   }
+
+  getNextEvent() {
+    return axios
+      .get(
+        `${API_URL}/events/next`,
+        {}
+      ).then(response => response.data)
+      .catch(e => Promise.reject(e.response.data));
+  }
 }
 
 const service = new WorldService();
