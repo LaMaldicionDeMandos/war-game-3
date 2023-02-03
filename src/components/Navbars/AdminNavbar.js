@@ -21,31 +21,21 @@ import classNames from "classnames";
 
 // reactstrap components
 import {
-  Button,
-  Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Input,
-  InputGroup,
   NavbarBrand,
   Navbar,
-  NavLink,
-  Nav,
-  Container,
-  Modal,
-  NavbarToggler,
-  ModalHeader,
 } from "reactstrap";
 import {Image} from "react-bootstrap";
 import CurrentDate from "../CurrentDate";
 import NextEventButton from "../NextEventButton";
 
+import {useGlobalState, CURRENT_COUNTRY} from "../../contexts/GlobalState";
+
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
   const [modalSearch, setmodalSearch] = React.useState(false);
   const [color, setcolor] = React.useState("navbar-transparent");
+  const [currentCountry] = useGlobalState(CURRENT_COUNTRY);
+
   React.useEffect(() => {
     window.addEventListener("resize", updateColor);
     // Specify how to clean up after this effect:
@@ -79,10 +69,10 @@ function AdminNavbar(props) {
       <Navbar className={classNames("navbar-absolute", color)} expand="lg">
         <div className="navbar-wrapper">
           <NavbarBrand href="#" onClick={(e) => e.preventDefault()}>
-            <Image src="img/flags/onu.svg" width={80} height={50}/>
+            <Image src={`img/flags/${currentCountry?.code || 'onu'}.svg`} width={80} height={50}/>
           </NavbarBrand>
           <NavbarBrand href="#" onClick={(e) => e.preventDefault()}>
-            {props.brandText}
+            {currentCountry?.name || props.brandText}
           </NavbarBrand>
         </div>
         <CurrentDate />

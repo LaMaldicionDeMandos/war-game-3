@@ -2,12 +2,14 @@ import React from "react";
 import worldService from '../services/world.service';
 import {Button} from "reactstrap";
 
+import {CURRENT_EVENT, setGlobalState} from "../contexts/GlobalState";
+
 function NextEventButton() {
 
   const onNext = () => {
     worldService.getNextEvent()
       .then(ev => {
-        console.log(`Next Event ${JSON.stringify(ev)}`);
+        setGlobalState(CURRENT_EVENT, () => ev);
       })
   }
 

@@ -15,15 +15,16 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, {useEffect} from "react";
 import GoogleMapReact from 'google-map-react';
-import {useGlobalState, setGlobalState, MAP_CENTER} from "../contexts/GlobalState";
+import {useGlobalState, setGlobalState, MAP_CENTER, CURRENT_COUNTRY} from "../contexts/GlobalState";
 
 import * as _ from 'lodash';
 import CountryItem from "./MapItems/Country/CountryItem";
 
 function Map({countries}) {
   const [center] = useGlobalState(MAP_CENTER);
+  const [currentCountry] = useGlobalState(CURRENT_COUNTRY);
   const defaultProps = {
     center: center,
     zoom: 8,
@@ -36,13 +37,17 @@ function Map({countries}) {
     mapTypeControlOptions: {position: 3}
   };
 
+  useEffect(() => {
+    if (currentCountry) setGlobalState(MAP_CENTER, () =>  currentCountry.position);
+  }, [currentCountry]);
+
   const countryItems = _.map(countries, (country) => {
     return <CountryItem country={country} lat={country.position.lat} lng={country.position.lng} />
   });
 
   const onMapChange = (e) => {
     console.log("Map changed " + JSON.stringify(e));
-    setGlobalState(MAP_CENTER, (c) => e.center);
+    setGlobalState(MAP_CENTER, () => e.center);
   }
 
   return (
@@ -51,6 +56,7 @@ function Map({countries}) {
         <GoogleMapReact
           bootstrapURLKeys={{ key: "" }}
           defaultCenter={defaultProps.center}
+          center={center}
           defaultZoom={defaultProps.zoom}
           onChange={onMapChange}
           options={mapOptions}

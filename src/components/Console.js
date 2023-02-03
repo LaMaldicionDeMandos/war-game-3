@@ -11,7 +11,7 @@ function Console() {
   const [center] = useGlobalState(MAP_CENTER);
 
   const onEnter = (target) => {
-    if(target.charCode==13){
+    if(target.charCode === 13){
       _console.execute(target.currentTarget.value, center)
         .then(() => showSuccess(notificationAlertRef, "Success!"))
         .catch((e) => showError(notificationAlertRef, e));

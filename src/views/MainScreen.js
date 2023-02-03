@@ -22,15 +22,35 @@ import { Card, CardBody, Row, Col } from "reactstrap";
 import Map from "../components/Map";
 import Console from "../components/Console";
 
+import {useGlobalState, CURRENT_EVENT, CURRENT_COUNTRY, setGlobalState} from "../contexts/GlobalState";
+
 import worldService from '../services/world.service';
+import countryService from '../services/country.service';
 
 function MainScreen() {
   const [countries, setCountries] = useState([]);
+  const [currentEvent] = useGlobalState(CURRENT_EVENT);
+  const [currentCountry] = useGlobalState(CURRENT_COUNTRY);
 
   useEffect(() => {
+    console.log('GET COUNTRIES');
     worldService.getAllCountries()
       .then(c => setCountries(c));
   }, []);
+
+  useEffect(() => {
+    if( currentEvent) getCurrentCountry(currentEvent.countryId);
+  }, [currentEvent]);
+
+  const getCurrentCountry = (id) => {
+    countryService.getCountry(id)
+      .then(country => {
+        setGlobalState(CURRENT_COUNTRY, () => country);
+      })
+      .catch(e => {
+        console.error(JSON.stringify(e));
+      });
+  }
 
   return (
     <>
@@ -39,7 +59,7 @@ function MainScreen() {
           <Col md="12" style={{padding: 0}}>
             <Card className="card-plain" style={{margin: 0}}>
               <CardBody style={{padding: 0}}>
-                <Map countries={countries}/>
+                <Map countries={countries} />
               </CardBody>
             </Card>
           </Col>
