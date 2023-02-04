@@ -17,13 +17,15 @@
 */
 import React, {useEffect} from "react";
 import GoogleMapReact from 'google-map-react';
-import {useGlobalState, setGlobalState, MAP_CENTER, CURRENT_COUNTRY} from "../contexts/GlobalState";
+import {useGlobalState, setGlobalState, MAP_CENTER, CURRENT_COUNTRY, MAP_ITEMS} from "../contexts/GlobalState";
 
 import * as _ from 'lodash';
 import CountryItem from "./MapItems/Country/CountryItem";
+import mapContext from '../contexts/Map.context';
 
-function Map({countries}) {
+function Map() {
   const [center] = useGlobalState(MAP_CENTER);
+  const [mapItems] = useGlobalState(MAP_ITEMS);
   const [currentCountry] = useGlobalState(CURRENT_COUNTRY);
   const defaultProps = {
     center: center,
@@ -41,9 +43,9 @@ function Map({countries}) {
     if (currentCountry) setGlobalState(MAP_CENTER, () =>  currentCountry.position);
   }, [currentCountry]);
 
-  const countryItems = _.map(countries, (country) => {
+  const countryItems = _.chain(mapItems).filter(item => item.mapType === mapContext.COUNTRY_TYPE).map(country => {
     return <CountryItem country={country} lat={country.position.lat} lng={country.position.lng} />
-  });
+  }).value();
 
   const onMapChange = (e) => {
     console.log("Map changed " + JSON.stringify(e));
@@ -60,6 +62,12 @@ function Map({countries}) {
           defaultZoom={defaultProps.zoom}
           onChange={onMapChange}
           options={mapOptions}
+          onGoogleApiLoaded={({map, maps}) => {
+            _.chain(mapItems).filter(item => item.mapType === mapContext.VISION_RED_TYPE)
+              .each(visionItem => {
+                new maps.Circle(_.assign(visionItem, {map}));
+              }).value();
+            }}
         >
           <label className="map-label">
             lat: {center.lat} - lng: {center.lng}</label>

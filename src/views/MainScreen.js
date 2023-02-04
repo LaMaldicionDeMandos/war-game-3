@@ -16,6 +16,7 @@
 
 */
 import React, {useEffect, useState} from "react";
+import * as _ from 'lodash';
 
 // reactstrap components
 import { Card, CardBody, Row, Col } from "reactstrap";
@@ -24,18 +25,20 @@ import Console from "../components/Console";
 
 import {useGlobalState, CURRENT_EVENT, CURRENT_COUNTRY, setGlobalState} from "../contexts/GlobalState";
 
+import mapContext from '../contexts/Map.context';
 import worldService from '../services/world.service';
 import countryService from '../services/country.service';
 
 function MainScreen() {
-  const [countries, setCountries] = useState([]);
   const [currentEvent] = useGlobalState(CURRENT_EVENT);
   const [currentCountry] = useGlobalState(CURRENT_COUNTRY);
 
   useEffect(() => {
     console.log('GET COUNTRIES');
     worldService.getAllCountries()
-      .then(c => setCountries(c));
+      .then(countries => {
+        mapContext.addItems(_.map(countries, country => _.assign(country, {mapType: mapContext.COUNTRY_TYPE})));
+      });
   }, []);
 
   useEffect(() => {
@@ -59,7 +62,7 @@ function MainScreen() {
           <Col md="12" style={{padding: 0}}>
             <Card className="card-plain" style={{margin: 0}}>
               <CardBody style={{padding: 0}}>
-                <Map countries={countries} />
+                <Map />
               </CardBody>
             </Card>
           </Col>
