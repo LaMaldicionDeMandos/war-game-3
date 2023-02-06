@@ -1,9 +1,10 @@
 import * as _ from 'lodash';
 
 import addCountryCommand from '../context/commands/addCountry.command';
+import addCityCommand from '../context/commands/addCity.command';
 
 class Console {
-  #processors = [addCountryCommand];
+  #processors = [addCountryCommand, addCityCommand];
   execute(command, position) {
     const [commandName, args] = this.#splitCommand(command);
     const processor = _.find(this.#processors, processor => processor.support(commandName));

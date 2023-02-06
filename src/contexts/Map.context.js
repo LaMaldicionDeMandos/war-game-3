@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 class MapContext {
   COUNTRY_TYPE = 'country';
   VISION_RED_TYPE = 'vision_red';
-  #items = [{
+  #items = [/*{
     mapType: this.VISION_RED_TYPE,
     strokeColor: '#FF0000',
     strokeOpacity: 0.8,
@@ -12,7 +12,7 @@ class MapContext {
     fillColor: '#FF0000',
     fillOpacity: 0.3,
     center: {lat: -34.606, lng: -58.411},
-    radius: 10000},
+    radius: 1000000},
     {
       mapType: this.VISION_RED_TYPE,
       strokeColor: '#FF0000',
@@ -21,7 +21,7 @@ class MapContext {
       fillColor: '#FF0000',
       fillOpacity: 0.3,
       center: {lat: -34.206, lng: -58.411},
-      radius: 10000}];
+      radius: 10000}*/];
   constructor() {
     this.#setItems();
   }
