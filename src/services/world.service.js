@@ -33,6 +33,15 @@ class WorldService {
       .catch(e => Promise.reject(e.response.data));
   }
 
+  getAllCities() {
+    return axios
+      .get(
+        `${API_URL}/cities`,
+        {}
+      ).then(response => response.data)
+      .catch(e => Promise.reject(e.response.data));
+  }
+
   getNextEvent() {
     return axios
       .get(

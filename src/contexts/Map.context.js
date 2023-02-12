@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 
 class MapContext {
   COUNTRY_TYPE = 'country';
+  CITY_TYPE = 'city';
   VISION_RED_TYPE = 'vision_red';
   #items = [/*{
     mapType: this.VISION_RED_TYPE,

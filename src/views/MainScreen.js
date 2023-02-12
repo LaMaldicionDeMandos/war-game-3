@@ -39,6 +39,10 @@ function MainScreen() {
       .then(countries => {
         mapContext.addItems(_.map(countries, country => _.assign(country, {mapType: mapContext.COUNTRY_TYPE})));
       });
+    worldService.getAllCities()
+      .then(cities => {
+        mapContext.addItems(_.map(cities, city => _.assign(city, {mapType: mapContext.CITY_TYPE})))
+      })
   }, []);
 
   useEffect(() => {

@@ -22,6 +22,7 @@ import {useGlobalState, setGlobalState, MAP_CENTER, CURRENT_COUNTRY, MAP_ITEMS} 
 import * as _ from 'lodash';
 import CountryItem from "./MapItems/Country/CountryItem";
 import mapContext from '../contexts/Map.context';
+import CityItem from "./MapItems/City/CityItem";
 
 function Map() {
   const [center] = useGlobalState(MAP_CENTER);
@@ -45,6 +46,10 @@ function Map() {
 
   const countryItems = _.chain(mapItems).filter(item => item.mapType === mapContext.COUNTRY_TYPE).map(country => {
     return <CountryItem country={country} lat={country.position.lat} lng={country.position.lng} />
+  }).value();
+
+  const cityItems = _.chain(mapItems).filter(item => item.mapType === mapContext.CITY_TYPE).map(city => {
+    return <CityItem city={city} lat={city.position.lat} lng={city.position.lng} >{city.name}</CityItem>
   }).value();
 
   const onMapChange = (e) => {
@@ -73,6 +78,7 @@ function Map() {
             lat: {center.lat} - lng: {center.lng}</label>
           <img src="img/circle.png" style={{position: 'fixed', top: -8, left: -8}}/>
           {countryItems}
+          {cityItems}
         </GoogleMapReact>
       </div>
     </>
