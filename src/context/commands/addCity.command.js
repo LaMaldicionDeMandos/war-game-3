@@ -8,7 +8,7 @@ class AddCityCommand {
     const params = assign(parseArgs(args), {position});
     if (!this.#validateArgs(params)) return Promise.reject("Required arguments: (name, points and country)");
     console.log('Add City ' + JSON.stringify(params))
-    return Promise.resolve();//worldService.addCountry(params);
+    return countryService.addCity(params);
   }
 
   support(commandName) {
