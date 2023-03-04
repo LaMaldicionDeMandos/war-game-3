@@ -32,6 +32,11 @@ class MapContext {
     this.#setItems();
   }
 
+  addItem(item) {
+    this.#items = _.concat(this.#items, item);
+    this.#setItems();
+  }
+
   addItems(items) {
     this.#items = _.concat(this.#items, items);
     this.#setItems();
